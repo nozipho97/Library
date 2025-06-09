@@ -1,0 +1,14 @@
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\obj\Debug\net9.0\LibraryItems.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\obj\Debug\net9.0\LibraryItems.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\obj\Debug\net9.0\LibraryItems.AssemblyInfo.cs
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\obj\Debug\net9.0\LibraryItems.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\bin\Debug\net9.0\LibraryItems.exe
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\bin\Debug\net9.0\LibraryItems.deps.json
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\bin\Debug\net9.0\LibraryItems.runtimeconfig.json
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\bin\Debug\net9.0\LibraryItems.dll
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\bin\Debug\net9.0\LibraryItems.pdb
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\obj\Debug\net9.0\LibraryItems.dll
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\obj\Debug\net9.0\refint\LibraryItems.dll
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\obj\Debug\net9.0\LibraryItems.pdb
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\obj\Debug\net9.0\LibraryItems.genruntimeconfig.cache
+C:\Users\Admin\source\repos\LibraryItems\LibraryItems\obj\Debug\net9.0\ref\LibraryItems.dll
