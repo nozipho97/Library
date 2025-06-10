@@ -1,21 +1,19 @@
-﻿using LibraryManager;
+﻿using LibraryItem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryItems
+namespace LibraryItem
 {
     public class Magazine : LibraryItem
     {
         public int IssueNumber { get; set; }
-        public string Month { get; set; }
 
         public override void Display()
         {
-            base.Display();
-            Console.WriteLine($"Issue: {IssueNumber}, Month: {Month}\n");
+            Console.WriteLine($"[Magazine] ID: {ID}, Title: {Title}, Issue: {IssueNumber}, Year: {YearPublished}");
         }
     }
 }

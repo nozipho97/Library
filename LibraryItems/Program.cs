@@ -1,157 +1,100 @@
-﻿using System;
+﻿using LibraryItem;
+using System;
 using System.Collections.Generic;
 
-namespace LibraryManager
+namespace LibraryItem
 {
-
     class Program
     {
-        static List<LibraryItem> libraryItems = new List<LibraryItem>();
-
         static void Main(string[] args)
         {
+            LibraryManager manager = new LibraryManager();
             bool running = true;
+
             while (running)
             {
-                Console.WriteLine("\nLibrary Management System");
-                Console.WriteLine("1. Add Item");
-                Console.WriteLine("2. Remove Item");
-                Console.WriteLine("3. Search Item");
-                Console.WriteLine("4. Display All Items");
+                Console.WriteLine("\n--- Library Manager ---");
+                Console.WriteLine("1. Add Book");
+                Console.WriteLine("2. Add DVD");
+                Console.WriteLine("3. Add Magazine");
+                Console.WriteLine("4. Display Items");
                 Console.WriteLine("5. Exit");
                 Console.Write("Select an option: ");
+                string choice = Console.ReadLine();
 
-                try
+                switch (choice)
                 {
-                    int choice = int.Parse(Console.ReadLine());
-                    switch (choice)
-                    {
-                        case 1:
-                            AddItem();
-                            break;
-                        case 2:
-                            RemoveItem();
-                            break;
-                        case 3:
-                            SearchItem();
-                            break;
-                        case 4:
-                            DisplayAllItems();
-                            break;
-                        case 5:
-                            running = false;
-                            break;
-                        default:
-                            Console.WriteLine("Invalid choice. Try again.");
-                            break;
-                    }
+                    case "1":
+                        Console.Write("Enter book title: ");
+                        string bookTitle = Console.ReadLine();
+
+                        Console.Write("Enter author: ");
+                        string author = Console.ReadLine();
+
+                        Book book = new Book
+                        {
+                            ID = Guid.NewGuid().ToString(),
+                            Title = bookTitle,
+                            Author = author,
+                            YearPublished = DateTime.Now.Year
+                        };
+                        manager.AddItem(book);
+                        Console.WriteLine(" Book added.");
+                        break;
+
+                    case "2":
+                        Console.Write("Enter DVD title: ");
+                        string dvdTitle = Console.ReadLine();
+
+                        Console.Write("Enter duration (minutes): ");
+                        int duration = int.Parse(Console.ReadLine());
+
+                        DVD dvd = new DVD
+                        {
+                            ID = Guid.NewGuid().ToString(),
+                            Title = dvdTitle,
+                            DurationMinutes = duration,
+                            YearPublished = DateTime.Now.Year
+                        };
+                        manager.AddItem(dvd);
+                        Console.WriteLine(" DVD added.");
+                        break;
+
+                    case "3":
+                        Console.Write("Enter magazine title: ");
+                        string magTitle = Console.ReadLine();
+
+                        Console.Write("Enter issue number: ");
+                        int issue = int.Parse(Console.ReadLine());
+
+                        Magazine mag = new Magazine
+                        {
+                            ID = Guid.NewGuid().ToString(),
+                            Title = magTitle,
+                            IssueNumber = issue,
+                            YearPublished = DateTime.Now.Year
+                        };
+                        manager.AddItem(mag);
+                        Console.WriteLine(" Magazine added.");
+                        break;
+
+                    case "4":
+                        manager.DisplayItems();
+                        break;
+
+                    case "5":
+                        running = false;
+                        break;
+
+                    default:
+                        Console.WriteLine(" Invalid option. Try again.");
+                        break;
                 }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Please enter a valid number.");
-                }
-            }
-        }
-
-        static void AddItem()
-        {
-            Console.WriteLine("Select item type: 1. Book 2. Magazine 3. DVD");
-            string typeChoice = Console.ReadLine();
-            Console.Write("Enter ID: ");
-            string id = Console.ReadLine();
-            Console.Write("Enter Title: ");
-            string title = Console.ReadLine();
-            Console.Write("Enter Year Published: ");
-
-            if (!int.TryParse(Console.ReadLine(), out int year))
-            {
-                Console.WriteLine("Invalid year. Operation cancelled.");
-                return;
             }
 
-            switch (typeChoice)
-            {
-                case "1":
-                    Console.Write("Enter Author: ");
-                    string author = Console.ReadLine();
-                    Console.Write("Enter Genre: ");
-                    string genre = Console.ReadLine();
-                    libraryItems.Add(new Book { ID = id, title = title, YearPublished = year, Author = author, Genre = genre });
-                    break;
-                case "2":
-                    Console.Write("Enter Issue Number: ");
-                    if (!int.TryParse(Console.ReadLine(), out int issueNumber))
-                    {
-                        Console.WriteLine("Invalid issue number.");
-                        return;
-                    }
-                    Console.Write("Enter Month: ");
-                    string month = Console.ReadLine();
-                    libraryItems.Add(new Magazine { ID = id, title = title, YearPublished = year, IssueNumber = issueNumber, Month = month });
-                    break;
-                case "3":
-                    Console.Write("Enter Director: ");
-                    string director = Console.ReadLine();
-                    Console.Write("Enter Duration in hours: ");
-                    if (!double.TryParse(Console.ReadLine(), out double duration))
-                    {
-                        Console.WriteLine("Invalid duration.");
-                        return;
-                    }
-                    libraryItems.Add(new DVD { ID = id, title = title, YearPublished = year, Director = director, Duration = duration });
-                    break;
-                default:
-                    Console.WriteLine("Invalid item type.");
-                    break;
-            }
-        }
-
-        static void RemoveItem()
-        {
-            Console.Write("Enter the ID of the item to remove: ");
-            string id = Console.ReadLine();
-            var item = libraryItems.Find(i => i.ID == id);
-            if (item != null)
-            {
-                libraryItems.Remove(item);
-                Console.WriteLine("Item removed successfully.");
-            }
-            else
-            {
-                Console.WriteLine("Item not found.");
-            }
-        }
-
-        static void SearchItem()
-        {
-            Console.Write("Enter the ID of the item to search: ");
-            string id = Console.ReadLine();
-            var item = libraryItems.Find(i => i.ID == id);
-            if (item != null)
-            {
-                Console.WriteLine("Item found:");
-                item.Display();
-            }
-            else
-            {
-                Console.WriteLine("Item not found.");
-            }
-        }
-
-        static void DisplayAllItems()
-        {
-            if (libraryItems.Count == 0)
-            {
-                Console.WriteLine("No items in the library.");
-                return;
-            }
-
-            Console.WriteLine("\nLibrary Items:");
-            foreach (var item in libraryItems)
-            {
-                item.Display();
-            }
+            Console.WriteLine("\n You may exit");
         }
     }
+
 }
 

@@ -1,21 +1,20 @@
-﻿using LibraryManager;
+﻿using LibraryItem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryItems
+namespace LibraryItem
 {
-    public abstract class DVD : LibraryItem
+    public class DVD : LibraryItem
     {
-        public string Director { get; set; }
-        public double Duration { get; set; } // in hours
+        public int DurationMinutes { get; set; }
 
         public override void Display()
         {
-            base.Display();
-            Console.WriteLine($"Director: {Director}, Duration: {Duration} hours\n");
+            Console.WriteLine($"[DVD] ID: {ID}, Title: {Title}, Duration: {DurationMinutes} mins, Year: {YearPublished}");
         }
     }
 }
+
